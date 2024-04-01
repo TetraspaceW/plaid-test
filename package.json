@@ -1,0 +1,16 @@
+{
+  "name": "plaid_test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "TetraspaceW",
+  "license": "",
+  "dependencies": {
+    "@dotenvx/dotenvx": "^0.27.1",
+    "plaid": "^22.0.1"
+  }
+}
