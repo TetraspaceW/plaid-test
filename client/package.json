@@ -1,14 +1,13 @@
 {
-  "name": "plaid_test",
+  "name": "plaid_test-client",
   "version": "1.0.0",
-  "description": "",
+  "description": "Client for plaid_test",
   "main": "dist/bundle.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production"
   },
   "author": "TetraspaceW",
-  "license": "",
   "dependencies": {
     "@babel/preset-typescript": "^7.24.1",
     "node-polyfill-webpack-plugin": "^3.0.0",

@@ -11,8 +11,7 @@
     "build": "concurrently \"npm run build:client\" \"npm run build:server\""
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "TetraspaceW",
   "devDependencies": {
     "concurrently": "^8.2.2"
   }

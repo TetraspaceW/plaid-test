@@ -1,9 +1,16 @@
 import express from 'express'
+import { createLinkTokenForIDVerification } from './plaid'
 
 const app = express()
 
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
     res.send('Hello World!')
+})
+
+app.get('/token', (_req, res) => {
+    createLinkTokenForIDVerification().then((data) => {
+        res.send(data)
+    })
 })
 
 app.listen(3000, () => {
