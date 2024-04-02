@@ -30,7 +30,7 @@ const plaidClient = createPlaidClient()
 export const getIdentityVerificationInfo = async (linkSessionId: string) => {
     const response = await plaidClient.identityVerificationGet({ identity_verification_id: linkSessionId })
 
-    return response.data
+    return response.data.status
 }
 
 export const createLinkTokenForIDVerification = async (userID: string) => {
@@ -44,8 +44,7 @@ export const createLinkTokenForIDVerification = async (userID: string) => {
         },
         client_name: "Spartacus.app",
         language: "en",
-        country_codes: [CountryCode.Us],
-        webhook: "https://localhost:3000/webhooks",
+        country_codes: [CountryCode.Us]
     }
 
     const response = await plaidClient.linkTokenCreate(idvTokenObject)

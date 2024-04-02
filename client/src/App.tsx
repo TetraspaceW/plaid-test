@@ -18,9 +18,14 @@ const App = () => {
 
     const { open: openPlaidLink, ready } = usePlaidLink({
         token: linkToken,
-        onSuccess: (public_token, metadata) => {
+        onSuccess: async (public_token, metadata) => {
             console.log('public_token', public_token);
             console.log('metadata', metadata);
+
+            // fetch identity verification data from server
+            const response = await fetch('http://localhost:3000/verify?link_session_id=' + metadata.link_session_id);
+            const data = await response.json();
+            console.log('data', data);
         },
     });
 
