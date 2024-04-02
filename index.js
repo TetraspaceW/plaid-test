@@ -11,7 +11,7 @@ const createPlaidClient = () => {
         baseOptions: {
             headers: {
                 "PLAID-CLIENT-ID": process.env.PLAID_CLIENT_ID,
-                "PLAID-SECRET": process.env.PLAID_DEVELOPMENT_KEY,
+                "PLAID-SECRET": process.env.PLAID_SANDBOX_KEY,
             }
         }
     })
@@ -19,12 +19,19 @@ const createPlaidClient = () => {
     return new PlaidApi(configuration)
 }
 
-const plaidClient = createPlaidClient()
+const getLoggedInUserID = () => {
+    return "tetraspace"
+}
 
+
+const plaidClient = createPlaidClient()
 
 const createLinkTokenForIDVerification = async () => {
     const idvTokenObject = {
         products: ["identity_verification"],
+        user: {
+            client_user_id: getLoggedInUserID(),
+        },
         identity_verification: {
             template_id: process.env.ID_VER_TEMPLATE,
         },
@@ -34,5 +41,10 @@ const createLinkTokenForIDVerification = async () => {
         webhook: "https://localhost:3000/webhooks",
     }
 
-    const response = await plaidClient.linkToTokenCreate(idvTokenObject)
+    const response = await plaidClient.linkTokenCreate(idvTokenObject)
+
+    return response.data
 }
+
+const response = await createLinkTokenForIDVerification()
+console.log(response)

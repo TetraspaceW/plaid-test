@@ -12,5 +12,8 @@
   "dependencies": {
     "@dotenvx/dotenvx": "^0.27.1",
     "plaid": "^22.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.3"
   }
 }
