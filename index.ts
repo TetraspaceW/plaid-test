@@ -1,17 +1,24 @@
-import { PlaidApi, Configuration, PlaidEnvironments } from "plaid"
+import { PlaidApi, Configuration, PlaidEnvironments, CountryCode, Products } from "plaid"
 import { config as dotenvxConfig } from "@dotenvx/dotenvx"
 
 dotenvxConfig()
 
-console.log("Client ID:", process.env.PLAID_CLIENT_ID)
+const PLAID_CLIENT_ID = process.env.PLAID_CLIENT_ID
+const PLAID_SANDBOX_KEY = process.env.PLAID_SANDBOX_KEY
+const ID_VER_TEMPLATE = process.env.ID_VER_TEMPLATE
+
+// throw errors if any are missing
+if (!PLAID_CLIENT_ID || !PLAID_SANDBOX_KEY || !ID_VER_TEMPLATE) {
+    throw new Error("Missing required environment variables")
+}
 
 const createPlaidClient = () => {
     const configuration = new Configuration({
         basePath: PlaidEnvironments.sandbox,
         baseOptions: {
             headers: {
-                "PLAID-CLIENT-ID": process.env.PLAID_CLIENT_ID,
-                "PLAID-SECRET": process.env.PLAID_SANDBOX_KEY,
+                "PLAID-CLIENT-ID": PLAID_CLIENT_ID,
+                "PLAID-SECRET": PLAID_SANDBOX_KEY,
             }
         }
     })
@@ -28,16 +35,16 @@ const plaidClient = createPlaidClient()
 
 const createLinkTokenForIDVerification = async () => {
     const idvTokenObject = {
-        products: ["identity_verification"],
+        products: [Products.IdentityVerification],
         user: {
             client_user_id: getLoggedInUserID(),
         },
         identity_verification: {
-            template_id: process.env.ID_VER_TEMPLATE,
+            template_id: ID_VER_TEMPLATE,
         },
         client_name: "Spartacus.app",
         language: "en",
-        country_codes: ["US"],
+        country_codes: [CountryCode.Us],
         webhook: "https://localhost:3000/webhooks",
     }
 

@@ -2,10 +2,11 @@
   "name": "plaid_test",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js"
   },
   "author": "TetraspaceW",
   "license": "",
