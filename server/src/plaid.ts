@@ -25,10 +25,6 @@ const createPlaidClient = () => {
     return new PlaidApi(configuration)
 }
 
-const getLoggedInUserID = () => {
-    return "tetraspace"
-}
-
 const plaidClient = createPlaidClient()
 
 export const getIdentityVerificationInfo = async (linkSessionId: string) => {

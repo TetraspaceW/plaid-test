@@ -10,8 +10,20 @@
     "build:server": "cd server && npm run build",
     "build": "concurrently \"npm run build:client\" \"npm run build:server\""
   },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/TetraspaceW"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TetraspaceW/plaid-test.git"
+  },
   "keywords": [],
-  "author": "TetraspaceW",
+  "author": "TetraspaceW <tetraspace.west@protonmail.com> (https://thetetra.space)",
+  "homepage": "https://github.com/TetraspaceW/plaid-test",
+  "bugs": {
+    "url": "https://github.com/TetraspaceW/plaid-test/issues"
+  },
   "devDependencies": {
     "concurrently": "^8.2.2"
   }
