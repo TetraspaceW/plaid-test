@@ -8,7 +8,7 @@ const App = () => {
     useEffect(() => {
         const getLinkToken = async () => {
             // fetch link token from server
-            const response = await fetch('http://localhost:3000/token');
+            const response = await fetch('http://localhost:3000/token?user_id=tetraspace');
             const data = await response.json();
             setLinkToken(data.link_token)
         };
@@ -19,7 +19,8 @@ const App = () => {
     const { open: openPlaidLink, ready } = usePlaidLink({
         token: linkToken,
         onSuccess: (public_token, metadata) => {
-            // send public_token to server
+            console.log('public_token', public_token);
+            console.log('metadata', metadata);
         },
     });
 

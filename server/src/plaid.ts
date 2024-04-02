@@ -29,14 +29,19 @@ const getLoggedInUserID = () => {
     return "tetraspace"
 }
 
-
 const plaidClient = createPlaidClient()
 
-export const createLinkTokenForIDVerification = async () => {
+export const getIdentityVerificationInfo = async (linkSessionId: string) => {
+    const response = await plaidClient.identityVerificationGet({ identity_verification_id: linkSessionId })
+
+    return response.data
+}
+
+export const createLinkTokenForIDVerification = async (userID: string) => {
     const idvTokenObject = {
         products: [Products.IdentityVerification],
         user: {
-            client_user_id: getLoggedInUserID(),
+            client_user_id: userID,
         },
         identity_verification: {
             template_id: ID_VER_TEMPLATE,
