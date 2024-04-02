@@ -7,7 +7,6 @@ const PLAID_CLIENT_ID = process.env.PLAID_CLIENT_ID
 const PLAID_SANDBOX_KEY = process.env.PLAID_SANDBOX_KEY
 const ID_VER_TEMPLATE = process.env.ID_VER_TEMPLATE
 
-// throw errors if any are missing
 if (!PLAID_CLIENT_ID || !PLAID_SANDBOX_KEY || !ID_VER_TEMPLATE) {
     throw new Error("Missing required environment variables")
 }
@@ -33,7 +32,7 @@ const getLoggedInUserID = () => {
 
 const plaidClient = createPlaidClient()
 
-const createLinkTokenForIDVerification = async () => {
+export const createLinkTokenForIDVerification = async () => {
     const idvTokenObject = {
         products: [Products.IdentityVerification],
         user: {
@@ -52,6 +51,3 @@ const createLinkTokenForIDVerification = async () => {
 
     return response.data
 }
-
-const response = await createLinkTokenForIDVerification()
-console.log(response)
