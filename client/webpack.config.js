@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 module.exports = {
     entry: './src/index.tsx',
@@ -17,11 +18,12 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js', '.jsx'],
+        extensions: ['.tsx', '.ts', '.js', '.jsx']
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html',
         }),
+        new NodePolyfillPlugin(),
     ],
 }; 
