@@ -7,6 +7,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
+        publicPath: '/',
     },
     module: {
         rules: [
@@ -26,4 +27,7 @@ module.exports = {
         }),
         new NodePolyfillPlugin(),
     ],
+    devServer: {
+        historyApiFallback: true,
+    }
 }; 

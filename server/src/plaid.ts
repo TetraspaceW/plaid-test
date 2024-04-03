@@ -30,7 +30,7 @@ const plaidClient = createPlaidClient()
 export const getIdentityVerificationInfo = async (linkSessionId: string) => {
     const response = await plaidClient.identityVerificationGet({ identity_verification_id: linkSessionId })
 
-    return response.data.status
+    return { status: response.data.status }
 }
 
 export const createLinkTokenForIDVerification = async (userID: string) => {

@@ -1,7 +1,7 @@
 {
-  "name": "plaid_test",
+  "name": "verify_test",
   "version": "1.0.0",
-  "description": "Test project for experimenting with Plaid features with Typescript and React.",
+  "description": "Test project for experimenting with KYC / identity verification features with Typescript and React.",
   "scripts": {
     "start:client": "cd client && npm start",
     "start:server": "cd server && npm start",

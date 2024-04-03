@@ -7,11 +7,11 @@ const app = express()
 app.use(cors())
 
 // create link token for ID verification
-app.get('/token', (_req, res) => {
+app.get('/plaid/token', (_req, res) => {
     const userID = _req.query.user_id;
 
     if (typeof userID !== 'string') {
-        res.status(400).send('Missing or invalid user ID query parameter')
+        res.status(400).send('Missing or invalid user_id query parameter')
         return
     }
     createLinkTokenForIDVerification(userID).then((data) => {
@@ -20,11 +20,11 @@ app.get('/token', (_req, res) => {
 })
 
 // get identity verification data corresponding to link session id
-app.get('/verify', (_req, res) => {
+app.get('/plaid/verify', (_req, res) => {
     const linkSessionId = _req.query.link_session_id;
 
     if (typeof linkSessionId !== 'string') {
-        res.status(400).send('Missing or invalid link session ID query parameter')
+        res.status(400).send('Missing or invalid link_session_id query parameter')
         return
     }
 

@@ -1,7 +1,7 @@
 {
-  "name": "plaid_test-server",
+  "name": "verify_test-server",
   "version": "1.0.0",
-  "description": "Server for plaid_test",
+  "description": "Server for verify_test",
   "main": "dist/index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
