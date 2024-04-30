@@ -22,10 +22,10 @@
     "url": "https://github.com/TetraspaceW/plaid-test.git"
   },
   "dependencies": {
-    "@dotenvx/dotenvx": "^0.27.1",
+    "@dotenvx/dotenvx": "^0.37.0",
     "cors": "^2.8.5",
     "express": "^4.19.2",
-    "plaid": "^22.0.1"
+    "plaid": "^23.0.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
